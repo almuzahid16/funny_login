@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login || Funny Project</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <div class="login-container">
+        <div class="input-box">
+                <h3>Sign In</h3>
+                <form>
+                    <div class="input-group">
+                        <label>Email</label> <br>
+                        <input type="email" id="email" placeholder="Enter email" value="useremail@gmail.com" readonly>
+                    </div>
+                    <div class="input-group">
+                        <label>Password</label><br>
+                        <input type="password" id="password"  placeholder="Enter password">
+                    </div>
+                <div class="action-area">
+                    <button  id="login-btn">Login</button>
+                </div>
+                </form>
+        </div>
+    </div>
+
+
+
+    <script>
+        let pass =  ""
+    const loginBtn =  document.getElementById("login-btn");
+    const password = "12345";
+    document.getElementById("password").addEventListener("input", function(e){
+        elementMove(e.target.value);
+        pass= e.target.value;
+    })
+    function  elementMove (userPassword){
+    if (userPassword != password) {
+        let cursorPositionX = 0;
+        let cursorPositionY = 0;
+        loginBtn.addEventListener("mouseover", function(e){
+            const position = loginBtn.getBoundingClientRect();
+            cursorPositionX = e.pageX - position.left - position.width ;
+            cursorPositionY = e.pageY - position.top - position.height;
+            loginBtn.style.transform =   "translate(" + cursorPositionX *3+ "px, " + cursorPositionY *3+ "px)";
+            loginBtn.innerText = "No cheating";
+            loginBtn.style.background = "#b71540";
+        })
+    }else{
+        loginBtn.innerText = "Login now";
+        loginBtn.style.background = "green";
+        loginBtn.style.transform =   "translate(" +0+ "px, " + 0 + "px)";
+        loginBtn.addEventListener("mouseover", function(e){
+        loginBtn.innerText = "Login now";
+        loginBtn.style.background = "green";
+            loginBtn.style.transform =   "translate(" +0+ "px, " + 0 + "px)";
+        });
+        loginBtn.addEventListener("click", function(e){
+            e.preventDefault();
+            loginBtn.innerText = "Login success";
+        })
+    }
+}
+
+
+elementMove("");
+
+</script>
+    
+</body>
+</html>
